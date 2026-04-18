@@ -5,15 +5,6 @@ pipeline {
         DOCKERHUB_creds = credentials('docker')
         DOCKER_IMAGE = "houssameddineb/my-app:0.1"
     }
-
-    stages {
-
-        stage('Clone Repo') {
-            steps {
-                git 'https://github.com/Avi-techAI/cw2-project.git'
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
                 echo 'Building Docker Image....'
