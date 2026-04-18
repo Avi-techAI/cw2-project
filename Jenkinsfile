@@ -44,7 +44,7 @@ pipeline {
 
         stage('Deploy'){
             steps {
-                sshagent(['jenkins-k&s-ssh-key']){
+                sshagent(['']){
                     sh """
                             ssh -i 'deployment.pem' ec2-user@ec2-54-205-227-151.compute-1.amazonaws.com '
                                 cd ansible
