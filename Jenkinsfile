@@ -5,7 +5,10 @@ pipeline {
         DOCKERHUB_creds = credentials('docker')
         DOCKER_IMAGE = "houssameddineb/my-app:0.1"
     }
-        stage('Build Docker Image') {
+
+    stages {
+
+       stage('Build Docker Image') {
             steps {
                 echo 'Building Docker Image....'
                 sh 'docker build --tsg $DOCKER_IMAGE'
@@ -38,5 +41,5 @@ pipeline {
                 sh 'docker push houssameddineb/my-app'
                 }
         }
-
+    }
 }
