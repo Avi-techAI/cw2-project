@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKERHUB_creds = credentials('docker')
-        DOCKER_IMAGE = "houssameddineb/my-app:0.1"
+        DOCKER_IMAGE = "athakur0610/cw2-server:1.0"
     }
 
     stages {
@@ -40,6 +40,21 @@ pipeline {
             steps {
                 sh 'docker push $DOCKER_IMAGE'
                 }
+        }
+
+        stage('Deploy'){
+            steps {
+                sshagent(['jenkins-k&s-ssh-key']){
+                    sh """
+                            ssh -i 'deployment.pem' ec2-user@ec2-54-205-227-151.compute-1.amazonaws.com '
+                                cd ansible
+                                ansible-playbook deploy-playbook.yml
+                            '
+                    """
+                }
+
+            }
+
         }
     }
 }
