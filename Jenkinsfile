@@ -38,7 +38,7 @@ pipeline {
 
         stage('Push to DockerHub') {
             steps {
-                sh 'docker push houssameddineb/my-app'
+                sh 'docker push $DOCKER_IMAGE'
                 }
         }
     }
