@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKERHUB_creds = credentials('docker')
-        DOCKER_IMAGE = "athakur0610/cw2-server:1.1"
+        DOCKER_IMAGE = "athakur0610/cw2-server:1.0"
     }
 
     stages {
