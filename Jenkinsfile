@@ -37,6 +37,6 @@ pipeline {
             steps {
                 sh 'docker push houssameddineb/my-app'
                 }
-            }
-        } 
+        }
+
 }
