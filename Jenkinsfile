@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKERHUB_creds = credentials('docker')
-        DOCKER_IMAGE = "athakur0610/cw2-server:1.0"
+        DOCKER_IMAGE = "athakur0610/cw2-server:1.1"
     }
 
     stages {
@@ -47,6 +47,7 @@ pipeline {
                     sh """
                         ssh ec2-user@ec2-54-205-227-151.compute-1.amazonaws.com '
                             kubectl set image deployment/devopscw2 cw2-server=$DOCKER_IMAGE &&
+							kubectl rollout restart deployment/devopscw2 &&
                             kubectl rollout status deployment/devopscw2
                         '
                     """
