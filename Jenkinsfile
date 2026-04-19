@@ -46,7 +46,7 @@ pipeline {
                 sshagent(['jenkins-ssh-key']) {
                     sh """
                         ssh -o StrictHostKeyChecking=no ec2-user@ec2-54-196-238-96.compute-1.amazonaws.com '
-                            kubectl set image deployment/devopscw2 cw2-server=$DOCKER_IMAGE &&
+                            kubectl set image deployment/devopscw2 devopscw2=$DOCKER_IMAGE &&
 							kubectl rollout restart deployment/devopscw2 &&
                             kubectl rollout status deployment/devopscw2
                         '
